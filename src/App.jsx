@@ -5,9 +5,10 @@ import "./index.css";
 function App() {
   const [jokes, setJokes] = useState([]);
   const [index, setIndex] = useState(0);
-
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+  
   useEffect(() => {
-    axios.get("/api/jokes")
+    axios.get(`${BASE_URL}/api/jokes`)
       .then(res => setJokes(res.data))
       .catch(err => console.error("Error fetching jokes:", err));
   }, []);
